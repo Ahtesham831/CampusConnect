@@ -26,9 +26,9 @@ const Header = () => {
             <img src={assets.star_icon} className='w-2.5' alt="" />
         </div>
 
-        <h1 className='text-3xl sm:text-6xl font-semibold sm:leading-16 text-gray-700'>Your own <span className='text-primary'> blogging</span> <br/> platform.</h1>
+        <h1 className='text-3xl sm:text-6xl font-semibold sm:leading-16 text-gray-700'>Your own <span className='text-primary'> campus blog</span> <br/> platform.</h1>
 
-        <p className='my-6 sm:my-8 max-w-2xl m-auto max-sm:text-xs text-gray-500'>This is your space to think out loud, to share what matters, and to write without filters. Whether it's one word or a thousand, your story starts right here.</p>
+        <p className='my-6 sm:my-8 max-w-2xl m-auto max-sm:text-xs text-gray-500'>This is your space to share academic insights, campus life stories, event updates, and career tips. Write without filters, connect with peers, and let your voice be heard across the campus!</p>
 
         <form onSubmit={onSubmitHandler} className='flex justify-between max-w-lg max-sm:scale-75 mx-auto border border-gray-300 bg-white rounded overflow-hidden'>
             <input ref={inputRef} type="text" placeholder='Search for blogs' required className='w-full pl-4 outline-none'/>

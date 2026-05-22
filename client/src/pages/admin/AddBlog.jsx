@@ -17,7 +17,7 @@ const AddBlog = () => {
     const [image, setImage] = useState(false);
     const [title, setTitle] = useState('');
     const [subTitle, setSubTitle] = useState('');
-    const [category, setCategory] = useState('Startup');
+    const [category, setCategory] = useState('Academics');
     const [isPublished, setIsPublished] = useState(false);
 
     const generateContent = async ()=>{
@@ -61,7 +61,7 @@ const AddBlog = () => {
                 setTitle('')
                 setSubTitle('')
                 quillRef.current.root.innerHTML = ''
-                setCategory('Startup')
+                setCategory('Academics')
             }else{
                 toast.error(data.message)
             }
@@ -76,7 +76,18 @@ const AddBlog = () => {
     useEffect(()=>{
         // Initiate Quill only once
         if(!quillRef.current && editorRef.current){
-            quillRef.current = new Quill(editorRef.current, {theme: 'snow'})
+            quillRef.current = new Quill(editorRef.current, {
+                theme: 'snow',
+                modules: {
+                    toolbar: [
+                        [{ 'header': [1, 2, 3, false] }],
+                        ['bold', 'italic', 'underline', 'strike'],
+                        [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                        ['link', 'image'],
+                        ['clean']
+                    ]
+                }
+            })
         }
     },[])
 
@@ -107,9 +118,9 @@ const AddBlog = () => {
         </div>
 
         <p className='mt-4'>Blog category</p>
-        <select onChange={e => setCategory(e.target.value)} name="category" className='mt-2 px-3 py-2 border text-gray-500 border-gray-300 outline-none rounded'>
+        <select value={category} onChange={e => setCategory(e.target.value)} name="category" className='mt-2 px-3 py-2 border text-gray-500 border-gray-300 outline-none rounded'>
             <option value="">Select category</option>
-            {blogCategories.map((item, index)=>{
+            {blogCategories.filter(item => item !== 'All').map((item, index)=>{
                 return <option key={index} value={item}>{item}</option>
             })}
         </select>

@@ -14,18 +14,24 @@ export const addBlog = async (req, res)=>{
             return res.json({success: false, message: "Missing required fields" })
         }
 
-        const fileBuffer = fs.readFileSync(imageFile.path)
-
-        // Upload Image to ImageKit
-        const response = await imagekit.upload({
-            file: fileBuffer,
+        // Upload Image to ImageKit using ReadStream for compatibility with SDK v7+
+        const response = await imagekit.files.upload({
+            file: fs.createReadStream(imageFile.path),
             fileName: imageFile.originalname,
             folder: "/blogs"
         })
 
+        // Clean up the temporary uploaded file
+        try {
+            fs.unlinkSync(imageFile.path);
+        } catch (unlinkError) {
+            console.error("Failed to delete temp file:", unlinkError);
+        }
+
         // optimization through imagekit URL transformation
-        const optimizedImageUrl = imagekit.url({
-            path: response.filePath,
+        const optimizedImageUrl = imagekit.helper.buildSrc({
+            urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT,
+            src: response.filePath,
             transformation: [
                 {quality: 'auto'}, // Auto compression
                 {format: 'webp'},  // Convert to modern format

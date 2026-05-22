@@ -8,7 +8,7 @@ const Footer = () => {
 
         <div>
             <img src={assets.logo} alt="logo" className='w-32 sm:w-44'/>
-            <p className='max-w-[410px] mt-6'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum unde quaerat eveniet cumque accusamus atque qui error quo enim fugiat?</p>
+            <p className='max-w-[410px] mt-6 text-sm leading-relaxed text-gray-500/95'>CampusConnect is the official student blogging platform of our college. Share your stories, academic insights, campus adventures, event highlights, and career journeys with the student community.</p>
         </div>
 
         <div className='flex flex-wrap justify-between w-full md:w-[45%] gap-5'>
