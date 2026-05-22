@@ -11,10 +11,8 @@
 
 ## 🔗 Live Deployments
 
-*   🌐 **Live Web Application (Frontend):** [https://campusconnect-ahtesham831.vercel.app](https://campusconnect-ahtesham831.vercel.app)
-*   🖥️ **API Server (Backend):** [https://campusconnect-server-ahtesham831.vercel.app](https://campusconnect-server-ahtesham831.vercel.app)
+*   🌐 **Live Web Application (Frontend):** [https://campus-connect-pacv.vercel.app/](https://campus-connect-pacv.vercel.app/)
 
-> *Note: If you deploy to different custom domains, you can update these URLs in your Vercel dashboard and the `.env` settings.*
 
 ---
 
